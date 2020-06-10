@@ -4,13 +4,15 @@
 
 ## 1 task与function最大的区别有两点       
 
-（1）task可以添加消耗时间的语句，而function不可以消耗时间。    
+（1）task可以添加消耗时间的语句，而function不可以消耗时间 (这一点与verilog相同)。    
 
 （2）task可以调用task和function，而function仅能调用function。
 
 还有一点要提醒新手：
 
-**task和function中是不能使用initial和always的。**    
+**task和function中是不能使用initial和always的。**      
+
+
 
 ## 2 task和function在SV中的新特性    
 
@@ -65,7 +67,7 @@ endfunction
 
 
 ```verilog
-function void print _checksum(const ref [31:0] a[]);
+function void print_checksum(const ref [31:0] a[]);
     bit [31:0] checksum=0;
     for(int i=0; i<a.size();i++)
         checksum^=a[i] ;
@@ -80,7 +82,7 @@ endfunction
 
 ### 2.2 关于task/function返回值      
 
-verilog中的task和function不能够使用return语句返回返回值并结束task/function，在systemverilog中增加了这一特性。
+verilog中的task和function不能够使用return语句返回返回值并结束task/function，而在systemverilog中增加了这一特性。
 
 值得注意的是，由于在system verilog中task和function本身就可以使用output参数来输出数据，因此return更大的意义在于提供了一种便于灵活结束task和function的机制。     
 
